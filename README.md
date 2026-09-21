@@ -9,13 +9,13 @@ dort drehen Sonderfahrten die erste Hauptachse, hier sollen sie gefunden werden.
 
 **Einordnung in die Reihe (die Kanten des Graphen):** die Wurzel ist bewusst die **einfachste** Antwort auf "was ist ungewöhnlich?": die normalen Touren sind **eine Gauß'sche Wolke**, eine Tour ist Anomalie, wenn ihr Mahalanobis-Abstand über einem χ²-Quantil liegt.
 Ihre Schwächen sind die Ansatzpunkte der späteren Stücke: nur **ein** elliptischer, konvexer Normalbereich (→ LOF, One-Class SVM, Isolation Forest), Gauß-Annahme und viele Touren im Verhältnis zu den Merkmalen (→ ECOD, Feature Bagging).
-Die Linie hat **keinen Konvergenzpunkt** – drei unabhängige Äste, jeweils mit einer Fortsetzung, dazu ein Kontrast (ECOD) und ein Autoencoder-Ast; bisher gebaut: die Wurzel und [isolation-forest-demo](../isolation-forest-demo).
+Die Linie hat **keinen Konvergenzpunkt** – drei unabhängige Äste, jeweils mit einer Fortsetzung, dazu ein Kontrast (ECOD) und ein Autoencoder-Ast; bisher gebaut: die Wurzel, [isolation-forest-demo](../isolation-forest-demo), [extended-isolation-forest-demo](../extended-isolation-forest-demo), [lof-demo](../lof-demo), [feature-bagging-demo](../feature-bagging-demo) und [ecod-demo](../ecod-demo).
 ```
 elliptic-envelope-demo (Wurzel: robuste Ellipse)
-  ├─ ECOD                       (Kontrast: verteilungsfrei)                       [nicht gebaut]
-  ├─ lof-demo → Feature Bagging (lokale Dichte; Ensembles gegen viele Merkmale)   [LOF gebaut; Feature Bagging nicht gebaut]
+  ├─ ecod-demo                  (Kontrast: verteilungsfrei)                       [gebaut]
+  ├─ lof-demo → Feature Bagging (lokale Dichte; Ensembles gegen viele Merkmale)   [beide gebaut]
   ├─ One-Class SVM → Deep SVDD  (gelernte Grenze)                                 [nicht gebaut]
-  ├─ isolation-forest-demo → Extended Isolation Forest (Zufallsbäume)             [gebaut; EIF nicht gebaut]
+  ├─ isolation-forest-demo → Extended Isolation Forest (Zufallsbäume)             [beide gebaut]
   └─ Autoencoder                (Rekonstruktionsfehler)                           [nicht gebaut]
 ```
 
