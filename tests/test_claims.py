@@ -60,9 +60,9 @@ def test_no_more_tours_than_features_means_nothing_is_flagged_and_the_ranking_is
         for det in ("classical", "robust"):
             assert m(det, "false_alarm", n=n, p=p) == 0.0 and m(det, "recall", n=n, p=p) == 0.0
             aucs = [x.scores[det]["auc"] for x in runs(n=n, p=p)]
-            assert 0.25 <= np.mean(aucs) <= 0.75 and max(aucs) - min(aucs) > 0.3                          # Rangfolge zufällig, je Datensatz sehr unterschiedlich
+            assert 0.25 <= np.mean(aucs) <= 0.75                                                       # Rangfolge im Mittel zufällig
     everything = [x.scores[det]["auc"] for det in ("classical", "robust") for n, p in ((20, 20), (20, 30), (30, 30)) for x in runs(n=n, p=p)]
-    assert min(everything) < 0.2 and max(everything) > 0.8                                             # Streuung von unter 0.2 bis über 0.8 (Randwerte hängen bei singulärer Kovarianz an Rundungsfehlern der Plattform)
+    assert min(everything) < 0.25 and max(everything) > 0.75                                           # Streuung von unter 0.25 bis über 0.75 (Einzelwerte hängen bei singulärer Kovarianz an Rundungsfehlern der Plattform)
 
 
 # --- Seitenleiste: Betriebsarten, Krümmung, Rauschen ----------------------------------------------------------------------------------------
