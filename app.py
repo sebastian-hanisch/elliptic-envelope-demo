@@ -413,7 +413,7 @@ if st.session_state.get("dimension_on"):
         dt = _dimension(tuple(kv for kv in base_data if kv[0] not in ("n", "p")), settings)
     st.plotly_chart(build_dimension(dt), width="stretch", key="dimension_chart")
     st.caption("Mittel über 5 feste Datensätze. Ist n nicht deutlich größer als p, ist die Kovarianz schlecht geschätzt: die robuste Schätzung markiert bis zu gut einem Viertel der normalen Touren, der klassische Detektor findet fast nichts. "
-               "Ist n nicht größer als p, hat die Kovarianz nur Rang n − 1, die Abstände sind nach oben durch (n−1)²/n begrenzt und sagen kaum noch etwas über die einzelne Tour: beide Detektoren markieren dann nichts (Fehlalarmrate 0.00), und die Rangfolge ist zufällig (AUC je Datensatz zwischen 0.14 und 0.90).")
+               "Ist n nicht größer als p, hat die Kovarianz nur Rang n − 1, die Abstände sind nach oben durch (n−1)²/n begrenzt und sagen kaum noch etwas über die einzelne Tour: beide Detektoren markieren dann nichts (Fehlalarmrate 0.00), und die Rangfolge ist zufällig (AUC je Datensatz von unter 0.2 bis über 0.8).")
 
 st.markdown("---")
 
