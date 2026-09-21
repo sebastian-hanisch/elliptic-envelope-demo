@@ -13,7 +13,7 @@ Die Linie hat **keinen Konvergenzpunkt** – drei unabhängige Äste, jeweils mi
 ```
 elliptic-envelope-demo (Wurzel: robuste Ellipse)
   ├─ ECOD                       (Kontrast: verteilungsfrei)                       [nicht gebaut]
-  ├─ LOF → Feature Bagging      (lokale Dichte; Ensembles gegen viele Merkmale)   [nicht gebaut]
+  ├─ lof-demo → Feature Bagging (lokale Dichte; Ensembles gegen viele Merkmale)   [LOF gebaut; Feature Bagging nicht gebaut]
   ├─ One-Class SVM → Deep SVDD  (gelernte Grenze)                                 [nicht gebaut]
   ├─ isolation-forest-demo → Extended Isolation Forest (Zufallsbäume)             [gebaut; EIF nicht gebaut]
   └─ Autoencoder                (Rekonstruktionsfehler)                           [nicht gebaut]
