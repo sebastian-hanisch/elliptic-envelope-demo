@@ -9,13 +9,13 @@ dort drehen Sonderfahrten die erste Hauptachse, hier sollen sie gefunden werden.
 
 **Einordnung in die Reihe (die Kanten des Graphen):** die Wurzel ist bewusst die **einfachste** Antwort auf "was ist ungewöhnlich?": die normalen Touren sind **eine Gauß'sche Wolke**, eine Tour ist Anomalie, wenn ihr Mahalanobis-Abstand über einem χ²-Quantil liegt.
 Ihre Schwächen sind die Ansatzpunkte der späteren Stücke: nur **ein** elliptischer, konvexer Normalbereich (→ LOF, One-Class SVM, Isolation Forest), Gauß-Annahme und viele Touren im Verhältnis zu den Merkmalen (→ ECOD, Feature Bagging).
-Die Linie hat **keinen Konvergenzpunkt** – drei unabhängige Äste, jeweils mit einer Fortsetzung, dazu ein Kontrast (ECOD) und ein Autoencoder-Ast; noch nicht gebaut.
+Die Linie hat **keinen Konvergenzpunkt** – drei unabhängige Äste, jeweils mit einer Fortsetzung, dazu ein Kontrast (ECOD) und ein Autoencoder-Ast; bisher gebaut: die Wurzel und [isolation-forest-demo](../isolation-forest-demo).
 ```
 elliptic-envelope-demo (Wurzel: robuste Ellipse)
   ├─ ECOD                       (Kontrast: verteilungsfrei)                       [nicht gebaut]
   ├─ LOF → Feature Bagging      (lokale Dichte; Ensembles gegen viele Merkmale)   [nicht gebaut]
   ├─ One-Class SVM → Deep SVDD  (gelernte Grenze)                                 [nicht gebaut]
-  ├─ Isolation Forest → Extended Isolation Forest (Zufallsbäume)                  [nicht gebaut]
+  ├─ isolation-forest-demo → Extended Isolation Forest (Zufallsbäume)             [gebaut; EIF nicht gebaut]
   └─ Autoencoder                (Rekonstruktionsfehler)                           [nicht gebaut]
 ```
 
