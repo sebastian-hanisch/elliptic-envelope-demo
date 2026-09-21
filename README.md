@@ -9,14 +9,14 @@ dort drehen Sonderfahrten die erste Hauptachse, hier sollen sie gefunden werden.
 
 **Einordnung in die Reihe (die Kanten des Graphen):** die Wurzel ist bewusst die **einfachste** Antwort auf "was ist ungewöhnlich?": die normalen Touren sind **eine Gauß'sche Wolke**, eine Tour ist Anomalie, wenn ihr Mahalanobis-Abstand über einem χ²-Quantil liegt.
 Ihre Schwächen sind die Ansatzpunkte der späteren Stücke: nur **ein** elliptischer, konvexer Normalbereich (→ LOF, One-Class SVM, Isolation Forest), Gauß-Annahme und viele Touren im Verhältnis zu den Merkmalen (→ ECOD, Feature Bagging).
-Die Linie hat **keinen Konvergenzpunkt** – drei unabhängige Äste, jeweils mit einer Fortsetzung, dazu ein Kontrast (ECOD) und ein Autoencoder-Ast; bisher gebaut: die Wurzel, [isolation-forest-demo](../isolation-forest-demo), [extended-isolation-forest-demo](../extended-isolation-forest-demo), [lof-demo](../lof-demo), [feature-bagging-demo](../feature-bagging-demo), [ecod-demo](../ecod-demo), [ocsvm-demo](../ocsvm-demo) und [deepsvdd-demo](../deepsvdd-demo).
+Die Linie hat **keinen Konvergenzpunkt** – drei unabhängige Äste, jeweils mit einer Fortsetzung, dazu ein Kontrast (ECOD) und ein Autoencoder-Ast; bisher gebaut: die Wurzel, [isolation-forest-demo](../isolation-forest-demo), [extended-isolation-forest-demo](../extended-isolation-forest-demo), [lof-demo](../lof-demo), [feature-bagging-demo](../feature-bagging-demo), [ecod-demo](../ecod-demo), [ocsvm-demo](../ocsvm-demo), [deepsvdd-demo](../deepsvdd-demo) und [autoencoder-anomalie-demo](../autoencoder-anomalie-demo) – die Linie ist komplett.
 ```
 elliptic-envelope-demo (Wurzel: robuste Ellipse)
   ├─ ecod-demo                  (Kontrast: verteilungsfrei)                       [gebaut]
   ├─ lof-demo → Feature Bagging (lokale Dichte; Ensembles gegen viele Merkmale)   [beide gebaut]
   ├─ ocsvm-demo → deepsvdd-demo (gelernte Grenze; gelernte Abbildung)             [beide gebaut]
   ├─ isolation-forest-demo → Extended Isolation Forest (Zufallsbäume)             [beide gebaut]
-  └─ Autoencoder                (Rekonstruktionsfehler)                           [nicht gebaut]
+  └─ autoencoder-anomalie-demo  (Rekonstruktionsfehler)                           [gebaut]
 ```
 
 | Frage | Ergebnis (300 Touren, 12 Merkmale, 10 % verstreute Anomalien im Abstand 6 Faktor-σ, ein Normalbereich, Rauschen 0.25, Schwelle 97,5 %-Quantil; Mittel über 5 feste Datensätze, Seeds 100000–100004) |
