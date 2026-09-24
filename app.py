@@ -23,6 +23,7 @@ from ee_presets import (
     kind_options,
     load_permalink_settings,
     randomize_seed,
+    seed_widget,
     sync_query_params,
 )
 from ee_visualization import (
@@ -159,6 +160,7 @@ with st.sidebar:
              "In der Lücke (ab zwei Betriebsarten): zwischen den Betriebsarten, wo die eine Ellipse alles für normal hält - AUC 0.40 für beide Detektoren.",
     )
     if kind != "gap":
+        seed_widget("strength_slider")
         strength = st.slider(
             "Abstand der Anomalien (Faktor-σ)", *bounds("strength_slider"), key="strength_slider", step=0.5,
             help="Wie weit die Anomalien im Faktorraum vom Normalen entfernt sind (in Standardabweichungen der versteckten Faktoren). Bei 3 / 4 / 6 / 9 / 12: Recall robust 0.23 / 0.62 / 0.97 / 1.00 / 1.00, klassisch 0.12 / 0.24 / 0.43 / 0.62 / 0.68 - "
