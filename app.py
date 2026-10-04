@@ -426,7 +426,7 @@ st.markdown(
     """
 | Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
 |---|---|---|
-| **Ein einziger elliptischer, konvexer Normalbereich** | Zwei Betriebsarten mit Anomalien in der Lücke: AUC **0.40** für klassisch und robust (schlechter als Raten); bei drei Betriebsarten findet die robuste Schätzung nur 47 % der verstreuten Anomalien. Gekrümmter Normalbereich: Fehlalarmrate 0.34 statt nominell 0.025. | **LOF** (lokale Dichte), **One-Class SVM** (gelernte Grenze), **Isolation Forest** (Zufallsbäume) |
+| **Ein einziger elliptischer, konvexer Normalbereich** | Zwei Betriebsarten mit Anomalien in der Lücke: AUC **0.40** für klassisch und robust (schlechter als Raten); bei drei Betriebsarten findet die robuste Schätzung nur 47 % der verstreuten Anomalien. Gekrümmter Normalbereich (Krümmung 0.75): Fehlalarmrate 0.35 statt nominell 0.025. | **LOF** (lokale Dichte), **One-Class SVM** (gelernte Grenze), **Isolation Forest** (Zufallsbäume) |
 | **Gauß'sche Normalverteilung (chi²-Schwelle)** | Auch bei einem Modus markiert die robuste Schätzung 4 % statt 2,5 % der normalen Touren; bei Krümmung ein Drittel. Eine Schwelle mit bekanntem Anteil erreicht bei 5 % Anomalien F1 0.91 statt 0.71. | **ECOD** (verteilungsfrei), Isolation Forest |
 | **Deutlich mehr Touren als Merkmale** | Bei 30 Touren und 12 Merkmalen markiert die robuste Schätzung 24 % der Normalen, der klassische Detektor findet nichts; bei 300 Touren und 30 Merkmalen 16 %. | **Feature Bagging** (Ensembles über Merkmalsteilmengen), Isolation Forest |
 | **Weniger als die Hälfte Anomalien** | Bei 30 % dichter Gruppe kippt die Schätzung (AUC **0.49**), bei 40 % wird die Gruppe zum Normalbereich (AUC **0.39**); verstreute Ausreißer hält der MCD bis 40 % (AUC 0.97), bei 45 % bricht er ein (Recall 0.40). | (keine Rettung innerhalb der Linie: das ist die Grenze jedes robusten Schätzers) |
@@ -434,7 +434,7 @@ st.markdown(
 """
 )
 st.caption(
-    "Die Nachbarn der Anomalie-Erkennung-Linie (noch nicht gebaut): ECOD (verteilungsfrei), LOF (lokale Dichte) und Feature Bagging, One-Class SVM und Deep SVDD, Isolation Forest und Extended Isolation Forest sowie ein Autoencoder. "
+    "Die Nachbarn der Anomalie-Erkennung-Linie (inzwischen alle gebaut): ECOD (verteilungsfrei), LOF (lokale Dichte) und Feature Bagging, One-Class SVM und Deep SVDD, Isolation Forest und Extended Isolation Forest sowie ein Autoencoder. "
     "Die Wurzel ist bewusst die einfachste Antwort: eine Ellipse."
 )
 
@@ -448,7 +448,7 @@ with st.expander("📐 Mathematische Formulierung"):
 
 **Klassisch.** $\hat\mu = \bar x$, $\hat\Sigma = \frac{1}{n-1}\sum (x_i-\bar x)(x_i-\bar x)^\top$. Kovarianz mit Rang $r < p$ (bei $n \le p$): Abstände über die von null verschiedenen Eigenwerte, Freiheitsgrade $r$. Der Abstand einer Tour im Datensatz ist höchstens $(n-1)^2/n$.
 
-**MCD.** $\min_{H \subset \{1..n\},\ |H| = h} \det \hat\Sigma_H$ mit $h \ge \lceil (n+p+1)/2 \rceil$ (größter Bruchpunkt, $\approx \frac{n-p}{2n}$). **FastMCD:** aus einer zufälligen Startmenge $H_0$ der Größe $p+1$ wiederholt $(\hat\mu_H, \hat\Sigma_H) \to d^2_i \to H' = $ die $h$ kleinsten $d^2_i$;
+**MCD.** $\min_{H \subset \{1..n\},\ |H| = h} \det \hat\Sigma_H$ mit $h \ge \lfloor (n+p+1)/2 \rfloor$ (größter Bruchpunkt, $\approx \frac{n-p}{2n}$). **FastMCD:** aus einer zufälligen Startmenge $H_0$ der Größe $p+1$ wiederholt $(\hat\mu_H, \hat\Sigma_H) \to d^2_i \to H' = $ die $h$ kleinsten $d^2_i$;
 $\det \hat\Sigma_{H'} \le \det \hat\Sigma_H$ (C-Schritt, Rousseeuw und Van Driessen). 500 zufällige Starts mit je zwei C-Schritten, die besten zehn laufen bis zur Konvergenz. **Konsistenz-Korrektur:** $\hat\Sigma \leftarrow \hat\Sigma \cdot \mathrm{med}_i(d^2_i) / \chi^2_{p,0.5}$.
 **Neugewichtung:** $w_i = \mathbb{1}[d^2_i \le \chi^2_{p,0.975}]$, $\hat\mu$, $\hat\Sigma$ aus den Touren mit $w_i = 1$, mit Korrektur der abgeschnittenen Verteilung $\hat\Sigma \leftarrow \hat\Sigma\, F_{\chi^2_p}(q)/F_{\chi^2_{p+2}}(q)$.
 
@@ -466,6 +466,6 @@ st.markdown("---")
 
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Anomalie-Erkennung: Ellipse bis Autoencoder](https://sebastianhanisch.net/konzepte-anomalie-erkennung.html)."
 )
