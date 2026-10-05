@@ -452,7 +452,7 @@ with st.expander("📐 Mathematische Formulierung"):
 $\det \hat\Sigma_{H'} \le \det \hat\Sigma_H$ (C-Schritt, Rousseeuw und Van Driessen). 500 zufällige Starts mit je zwei C-Schritten, die besten zehn laufen bis zur Konvergenz. **Konsistenz-Korrektur:** $\hat\Sigma \leftarrow \hat\Sigma \cdot \mathrm{med}_i(d^2_i) / \chi^2_{p,0.5}$.
 **Neugewichtung:** $w_i = \mathbb{1}[d^2_i \le \chi^2_{p,0.975}]$, $\hat\mu$, $\hat\Sigma$ aus den Touren mit $w_i = 1$, mit Korrektur der abgeschnittenen Verteilung $\hat\Sigma \leftarrow \hat\Sigma\, F_{\chi^2_p}(q)/F_{\chi^2_{p+2}}(q)$.
 
-**Kennzahlen.** AUC $= P(d^2_{\text{Anomalie}} > d^2_{\text{normal}})$ (Rangsumme, Bindungen halb); mittlere Präzision (Summe über die Treffer der Präzision an jeder Stelle); Recall, Precision, F1, Fehlalarmrate bei der Schwelle; Fehler der Kovarianz $\lVert \hat\Sigma - \Sigma_{\text{normal}} \rVert_F / \lVert \Sigma_{\text{normal}} \rVert_F$ (die Kovarianz der wahren normalen Touren dieses Datensatzes).
+**Kennzahlen.** AUC $= P(d^2_{\text{Anomalie}} > d^2_{\text{normal}})$ (Rangsumme, Bindungen halb); mittlere Präzision (Summe über die Treffer der Präzision an jeder Stelle; gleiche Werte bilden eine Schwelle, die Reihenfolge der Zeilen spielt keine Rolle); Recall, Precision, F1, Fehlalarmrate bei der Schwelle; Fehler der Kovarianz $\lVert \hat\Sigma - \Sigma_{\text{normal}} \rVert_F / \lVert \Sigma_{\text{normal}} \rVert_F$ (die Kovarianz der wahren normalen Touren dieses Datensatzes).
 
 **Affine Äquivarianz.** Für $x \mapsto Ax + b$ ändern sich weder klassische noch MCD-Abstände - Einheiten und Skalen der Merkmale sind gleichgültig (per Test).
 
